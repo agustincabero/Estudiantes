@@ -165,6 +165,7 @@ namespace Estudiantes
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             //leer el valor del sleector y pasarlo para elegir los registros por pagina.
+            estudiante.Registro_Paginas();
         }
     }
 }
