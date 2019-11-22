@@ -141,8 +141,10 @@ namespace Logica
                     c.nombre,
                     c.apellido,
                     c.email,
+                    c.imagen
                 }).Skip(inicio).Take(_reg_por_pagina).ToList();
                 _dataGridView.Columns[0].Visible = false;
+                _dataGridView.Columns[5].Visible = false;
                 _dataGridView.Columns[1].DefaultCellStyle.BackColor = Color.WhiteSmoke;
                 _dataGridView.Columns[3].DefaultCellStyle.BackColor = Color.WhiteSmoke;
             }
@@ -166,7 +168,15 @@ namespace Logica
             listTextBox[1].Text = Convert.ToString(_dataGridView.CurrentRow.Cells[3].Value);
             listTextBox[2].Text = Convert.ToString(_dataGridView.CurrentRow.Cells[1].Value);
             listTextBox[3].Text = Convert.ToString(_dataGridView.CurrentRow.Cells[4].Value);
-
+            try
+            {
+                byte[] arrayImage = (byte[]) _dataGridView.CurrentRow.Cells[5].Value;
+                image.Image = uploadImage.byteArrayToImage(arrayImage);
+            }
+            catch (Exception)
+            {
+                image.Image = _imageBitmap;
+            }
         }
 
         private List<Estudiante> listEstudiante;
