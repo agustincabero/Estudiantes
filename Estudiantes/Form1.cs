@@ -167,5 +167,21 @@ namespace Estudiantes
             //leer el valor del sleector y pasarlo para elegir los registros por pagina.
             estudiante.Registro_Paginas();
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows.Count != 0)
+            {
+                estudiante.GetEstudiante();
+            }
+        }
+
+        private void dataGridView1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (dataGridView1.Rows.Count != 0)
+            {
+                estudiante.GetEstudiante();
+            }
+        }
     }
 }

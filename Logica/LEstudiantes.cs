@@ -20,6 +20,7 @@ namespace Logica
         private DataGridView _dataGridView;
         private NumericUpDown _numericUpDown;
         private Paginador<Estudiante> _paginador;
+        private string _accion = "insert";
 
         public LEstudiantes(List<TextBox> listTextBox, List<Label> listLabel, object[] objetos)
         {
@@ -154,6 +155,18 @@ namespace Logica
                     c.email,
                 }).ToList();
             }
+        }
+
+        private int _idEstudiante = 0;
+        public void GetEstudiante()
+        {
+            _accion = "update";
+            _idEstudiante = Convert.ToInt16(_dataGridView.CurrentRow.Cells[0].Value);
+            listTextBox[0].Text = Convert.ToString(_dataGridView.CurrentRow.Cells[2].Value);
+            listTextBox[1].Text = Convert.ToString(_dataGridView.CurrentRow.Cells[3].Value);
+            listTextBox[2].Text = Convert.ToString(_dataGridView.CurrentRow.Cells[1].Value);
+            listTextBox[3].Text = Convert.ToString(_dataGridView.CurrentRow.Cells[4].Value);
+
         }
 
         private List<Estudiante> listEstudiante;
